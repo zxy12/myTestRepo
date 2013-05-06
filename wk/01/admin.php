@@ -10,8 +10,13 @@ require './config.inc.php';
 $cola = Cola::getInstance();
 $cola->boot();
 // 获得类名
-$className = 'IndexController';
-$actionName = 'indexAction';
+$className = 'AdminController';
+// 获得方法名
+if (isset($_GET['a'])) {
+        $actionName = $_GET['a'] . 'Action';
+} else {
+        $actionName = 'adminAction';
+}
 
 try {
     Cola::loadClass($className, './controllers');
